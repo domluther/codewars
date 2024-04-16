@@ -5,6 +5,6 @@
 // 1^2 + 2^2 + 2^2 = 9
 
 // My solution
-// function squareSum(numbers) {
-//   return numbers.reduce((acc, num) => acc + num * num, 0);
-// }
+function squareSum(numbers) {
+  return numbers.reduce((acc, num) => acc + num * num, 0);
+}
