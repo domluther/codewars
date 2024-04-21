@@ -14,3 +14,6 @@
 // cap = 100, on = 60, wait = 50 --> 10 # He can't fit 10 of the 50 waiting
 
 // My solution
+function enough(cap, on, wait) {
+  return on + wait <= cap ? 0 : Math.abs(cap - (wait + on));
+}
