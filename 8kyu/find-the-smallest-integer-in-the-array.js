@@ -7,10 +7,10 @@
 // You can assume, for the purpose of this kata, that the supplied array will not be empty.
 
 // My solution
-// function findSmallestInt(args) {
-//   return args.reduce((acc, cur) => (cur < acc ? cur : acc), Infinity);
-// }
+function findSmallestInt(args) {
+  return args.reduce((acc, cur) => (cur < acc ? cur : acc), Infinity);
+}
 
 // Cleaner - min function exists
 
-// function findSmallestInt = args => Math.min(...args);
+const findSmallestInt = (args) => Math.min(...args);
