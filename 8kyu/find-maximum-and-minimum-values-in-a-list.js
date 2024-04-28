@@ -18,3 +18,15 @@ var max = function (list) {
   //   Spread the list and what's the max?
   return Math.max(...list);
 };
+
+// Alternate way
+
+var min = function (list) {
+  list.sort((a, b) => a - b);
+  return list[0];
+};
+
+var max = function (list) {
+  list.sort((a, b) => b - a);
+  return list[0];
+};
