@@ -8,3 +8,8 @@
 function solution(str) {
   return str.split('').reverse().join('');
 }
+
+// Alternative
+
+// Using [...] spread instead of split
+// const solution = s => [...s].reverse().join('')
