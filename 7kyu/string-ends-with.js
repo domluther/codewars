@@ -10,3 +10,5 @@ function solution(str, ending) {
   if (ending === '') return true;
   return ending === str.slice(-ending.length);
 }
+
+// endsWith() is a thing
