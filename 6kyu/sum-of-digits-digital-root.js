@@ -28,3 +28,5 @@ function sumDigits(n) {
 function numberLength(n) {
   return String(n).split('').length;
 }
+
+// Support - could have just done num < 10 instead of numberLength of 1
