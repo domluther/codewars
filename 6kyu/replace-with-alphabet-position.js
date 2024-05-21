@@ -23,3 +23,20 @@ function alphabetPosition(text) {
   //   Filter characters out of range - those that aren't in the range of the alphabet
   return ASCIIArray.filter((value) => value >= 1 && value <= 26).join(' ');
 }
+
+// Alternate ideas
+
+// Use regex to filter unwanted characters
+let alphabetPosition = (text) =>
+  text
+    .toUpperCase()
+    .replace(/[^A-Z]/g, '')
+    .split('')
+    .map((ch) => ch.charCodeAt(0) - 64)
+    .join(' ');
+
+//  Use a for loop to do both at once
+for (var i = 0; i < text.length; i++) {
+  var code = text.toUpperCase().charCodeAt(i);
+  if (code > 64 && code < 91) result += code - 64 + ' ';
+}
