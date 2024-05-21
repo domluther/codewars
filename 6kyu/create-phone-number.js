@@ -5,3 +5,20 @@
 // The returned format must be correct in order to complete this challenge.
 
 // Don't forget the space after the closing parentheses!
+
+function createPhoneNumber(numbers) {
+  return `(${numbers[0]}${numbers[1]}${numbers[2]}) ${numbers[3]}${numbers[4]}${numbers[5]}-${numbers[6]}${numbers[7]}${numbers[8]}${numbers[9]}`;
+}
+
+// Neater use of substring
+function createPhoneNumber(numbers) {
+  numbers = numbers.join('');
+  return (
+    '(' +
+    numbers.substring(0, 3) +
+    ') ' +
+    numbers.substring(3, 6) +
+    '-' +
+    numbers.substring(6)
+  );
+}
