@@ -33,3 +33,6 @@ function duplicateCount(text) {
 
   return distinct;
 }
+
+// Could have filtered to greater than 1 and counted
+Object.keys(count).filter((key) => count[key] > 1).length;
