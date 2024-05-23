@@ -19,4 +19,4 @@ function validatePIN(pin) {
 
 //  \d is search for digit
 // Could have been combined into one pattern but harder to read
-^[\d]{4}$|^[\d]{6}$
+// ^[\d]{4}$|^[\d]{6}$
