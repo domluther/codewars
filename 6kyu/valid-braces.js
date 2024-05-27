@@ -15,18 +15,16 @@
 // "[({})](]" =>  False
 
 function validBraces(braces) {
-  let valid = true;
   // Split string into an array
   const splitBraces = braces.split('');
   const leftBraces = [];
-  //   Is it a left one? Add to a stack
   for (let i = 0; i < splitBraces.length; i++) {
-    // Add to stack
+    //   Is it a left one? Add to a stack
     if (isLeftBrace(splitBraces[i])) {
       leftBraces.push(splitBraces[i]);
     } else {
       //   Is it a right one? Pop from stack, is it a valid pair?
-      if (!isMatch(leftBraces.pop(), splitBraces[i])) return false;
+      if (!isValidPair(leftBraces.pop(), splitBraces[i])) return false;
     }
   }
   // Left braces should be empty
@@ -37,13 +35,40 @@ function isLeftBrace(brace) {
   return brace === '(' || brace === '[' || brace === '{';
 }
 
-function isMatch(leftBrace, rightBrace) {
-  return (
-    (leftBrace === '(' && rightBrace === ')') ||
-    (leftBrace === '{' && rightBrace === '}') ||
-    (leftBrace === '[' && rightBrace === ']')
-  );
+function isValidPair(leftBrace, rightBrace) {
+  const braceMap = { '{': '}', '(': ')', '[': ']' };
+  return braceMap[leftBrace] === rightBrace;
 }
 
-toTest = '[(';
-console.log(validBraces(toTest));
+console.log(validBraces('()'));
+
+// Cleaner solution
+function validBracesAlt(braces) {
+  const stack = [];
+  // Iterate through the braces
+  for (var i = 0; i < braces.length; i++) {
+    switch (braces[i]) {
+      // Opening brace? Push to stack
+      case '(':
+      case '[':
+      case '{':
+        stack.push(braces[i]);
+        break;
+      // Right hand one? Doesn't match? Return false
+      case ')':
+        if (stack.pop() != '(') return false;
+        break;
+      case ']':
+        if (stack.pop() != '[') return false;
+        break;
+      case '}':
+        if (stack.pop() != '{') return false;
+        break;
+    }
+  }
+  //   Stack should be empty
+  return stack.length == 0;
+}
+
+const ans = validBracesAlt('()');
+console.log(ans);
