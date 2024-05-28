@@ -61,3 +61,27 @@ function solution(roman) {
 const ans = solution('MCMXCIV');
 
 console.log(ans);
+
+// Found solution
+function solutionCodeWars(roman) {
+  // Key lookups
+  var data = { M: 1000, D: 500, C: 100, L: 50, X: 10, V: 5, I: 1 };
+  var numbers = roman.split('');
+  var sum = 0,
+    i;
+
+  // Iterate through the number
+  for (i = 0; i < numbers.length; i++) {
+    // If the first character is less than the second one - special case time
+    if (data[numbers[i]] < data[numbers[i + 1]]) {
+      // Add eg (1000 - 100) because CM
+      sum += data[numbers[i + 1]] - data[numbers[i]];
+      i++;
+    } else {
+      // Just add the next value
+      sum += data[numbers[i]];
+    }
+  }
+
+  return sum;
+}
