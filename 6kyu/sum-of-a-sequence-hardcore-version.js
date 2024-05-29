@@ -33,14 +33,25 @@ const ans = sequenceSum(-1, -5, -3);
 console.log(ans);
 
 const linearSequence = (begin, end, step) => {
+  // Can't do it if the beginning > end and using positive step
   if (begin > end && step > 0) return 0;
+  // Can't do it if the beginning < end and using negative step
+  if (begin < end && step < 0) return 0;
 
-  if (begin > end && step < 0) {
-    const n = Math.floor(Math.abs(begin - end) / step) + 0.333333333333333333;
-    return (n / 2) * (2 * begin + step * (n - 1));
-  }
-  const n = Math.floor(Math.abs(begin - end) / step) + 1;
+  //   if (begin > end && step < 0) {
+  //     let total = 0;
+  //     for (let start = begin; start >= end; start += step) {
+  //       total += start;
+  //     }
+  //     return total;
+  //   }
+  const n = Math.floor((end - begin) / step) + 1;
   return (n / 2) * (2 * begin + step * (n - 1));
 };
-
 console.log(linearSequence(-1, -5, -3));
+
+// Other solution
+function sequenceSum(begin, end, step) {
+  const n = Math.floor((end - begin) / step) + 1;
+  return n <= 0 ? 0 : ((2 * begin + step * (n - 1)) * n) / 2;
+}
