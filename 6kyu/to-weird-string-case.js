@@ -6,19 +6,15 @@
 // "String" => "StRiNg"
 // "Weird string case" => "WeIrD StRiNg CaSe"
 function toWeirdCase(string) {
-  return string
-    .toLowerCase()
-    .split(' ')
-    .map((char, index) => (index % 2 === 0 ? char.toUpperCase() : char))
-    .join('');
+  // Split into words
+  const words = string.toLowerCase().split(' ');
+  return words.map((word) => wordToWeirdCase(word)).join(' ');
 }
 
-console.log(toWeirdCase('this is a test'));
-
 function wordToWeirdCase(word) {
-  // Works for an individual word
+  // Deals with each word - even characters are in uppercase
   return word
-    .split(' ')
+    .split('')
     .map((char, index) => (index % 2 === 0 ? char.toUpperCase() : char))
     .join('');
 }
