@@ -36,7 +36,8 @@ function nbDig(n, d) {
   //   return count;
 }
 
-// Shorter - concatenate all the digits
+// Shorter - concatenate all the digits and then split that way.
+// As I don't care about the numbers themselves, this is much more efficient
 function concatDigit(n, d) {
   let all = '';
   for (let i = 0; i <= n; i++) {
@@ -45,7 +46,7 @@ function concatDigit(n, d) {
   return all.split(d).length - 1;
 }
 
-// const ans = nbDig(5750, 0);
-// console.log(ans);
-let ans2 = concatDigit(25, 1);
+const ans = nbDig(5750, 0);
+console.log(ans);
+let ans2 = concatDigit(575002, 9);
 console.log(ans2);
