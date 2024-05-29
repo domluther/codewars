@@ -12,5 +12,13 @@
 // 1,5,3  --> 5 (1 + 4)
 
 const sequenceSum = (begin, end, step) => {
-  // May the Force be with you
+  let total = 0;
+  for (let start = begin; start <= end; start += step) {
+    total += start;
+  }
+
+  return total;
 };
+
+const ans = sequenceSum(1, 5, 3);
+console.log(ans);
