@@ -36,7 +36,8 @@ const linearSequence = (begin, end, step) => {
   if (begin > end && step > 0) return 0;
 
   if (begin > end && step < 0) {
-    // Work this out
+    const n = Math.floor(Math.abs(begin - end) / step) + 0.333333333333333333;
+    return (n / 2) * (2 * begin + step * (n - 1));
   }
   const n = Math.floor(Math.abs(begin - end) / step) + 1;
   return (n / 2) * (2 * begin + step * (n - 1));
