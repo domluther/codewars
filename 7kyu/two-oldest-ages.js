@@ -14,11 +14,20 @@ function twoOldestAges(ages) {
   let oldest = 0;
   let secondOldest = 0;
   for (let i = 0; i < ages.length; i++) {
-    if (ages[i] > oldest) oldest = ages[i];
+    if (ages[i] > oldest) {
+      // If we found an older one, that oldest is now the second oldest
+      secondOldest = oldest;
+      oldest = ages[i];
+    } else if (ages[i] > secondOldest) secondOldest = ages[i];
   }
 
-  return [0, oldest];
+  return [secondOldest, oldest];
 }
 
-const ans = twoOldestAges([2, 6, 6, 9, 3, 5, 10]);
+const ans = twoOldestAges([2, 6, 6, 9, 30, 5, 10]);
 console.log(ans);
+
+// Shortest answer
+function twoOldestAges(ages) {
+  return ages.sort((a, b) => a - b).slice(-2);
+}
