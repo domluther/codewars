@@ -14,7 +14,37 @@
 // titleCase('THE WIND IN THE WILLOWS', 'The In') // should return: 'The Wind in the Willows'
 // titleCase('the quick brown fox') // should return: 'The Quick Brown Fox'
 
-function titleCase(title, minorWords) {}
+function titleCase(title, minorWords) {
+  // No title? No need to process it
+  if (!title) return '';
 
-const ans = titleCase('a clash of KINGS', 'a an the of');
+  // Easier if arrays of words
+  const words = title.toLowerCase().split(' ');
+  // Minor words might be undefined
+  minorWords = minorWords ? minorWords.toLowerCase().split(' ') : [];
+
+  const outputWords = [];
+  // First word is always title case
+  outputWords.push(titleCaseWord(words[0]));
+  // Starting at word 2 (index 1)
+  for (let i = 1; i < words.length; i++) {
+    // Minor words aren't capitalised
+    let minor = false;
+    for (let j = 0; j < minorWords.length; j++) {
+      if (words[i] === minorWords[j]) {
+        minor = true;
+      }
+    }
+    if (minor) outputWords.push(words[i]);
+    else outputWords.push(titleCaseWord(words[i]));
+  }
+
+  return outputWords.join(' ');
+}
+
+const ans = titleCase('');
 console.log(ans);
+
+function titleCaseWord(word) {
+  return word[0].toUpperCase() + word.slice(1);
+}
