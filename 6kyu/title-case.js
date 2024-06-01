@@ -42,7 +42,7 @@ function titleCase(title, minorWords) {
   return outputWords.join(' ');
 }
 
-const ans = titleCase('');
+const ans = titleCase('hello my friend', 'friend');
 console.log(ans);
 
 function titleCaseWord(word) {
