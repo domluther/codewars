@@ -8,7 +8,17 @@
 // 3 6 9
 
 multiplicationTable = function (size) {
-  // insert code here
+  const ans = [];
+  // 2d array is easiest option
+
+  for (let i = 1; i <= size; i++) {
+    let tempArr = [];
+    for (let j = 1; j <= size; j++) {
+      tempArr.push(i * j);
+    }
+    ans.push(tempArr);
+  }
+  return ans;
 };
 
 const ans = multiplicationTable(3);
