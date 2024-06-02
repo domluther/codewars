@@ -25,3 +25,5 @@ const ans = solve('HELLo');
 console.log(ans);
 
 // Notes
+// Could have worked out lowerCount by doing length - upperCount after the loop
+// Could have used regex - 'remove all lower/upper case letters - how long is it?'
