@@ -21,6 +21,14 @@
 
 function countDevelopers(list) {
   // Iterate through and count number where continent = Europe + language = JavaScript
+  let count = 0;
+  for (let i = 0; i < list.length; i++) {
+    const item = list[i];
+    item.continent === 'Europe' && item.language === 'JavaScript'
+      ? count++
+      : '';
+  }
+  return count;
 }
 
 let list1 = [
