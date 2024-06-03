@@ -20,5 +20,15 @@ function rowWeights(array) {
   let teamOneWeight = 0;
   let teamTwoWeight = 0;
 
+  // Iterate through the array, add up alternate digits (could do with reduce in 1 line)
+  for (let i = 0; i < array.length; i++) {
+    const value = array[i];
+    // Shorter with a ternary
+    i % 2 === 0 ? (teamOneWeight += value) : (teamTwoWeight += value);
+  }
+
   return [teamOneWeight, teamTwoWeight];
 }
+
+const ans = rowWeights([80]);
+console.log(ans);
