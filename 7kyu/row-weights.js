@@ -32,3 +32,9 @@ function rowWeights(array) {
 
 const ans = rowWeights([80]);
 console.log(ans);
+
+// Using reduce
+rowWeights2 = (arr) => arr.reduce((a, b, i) => ((a[i % 2] += b), a), [0, 0]);
+
+const ans2 = rowWeights2([80, 20]);
+console.log(ans2);
