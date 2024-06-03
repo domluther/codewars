@@ -68,3 +68,10 @@ let list1 = [
 
 const ans = countDevelopers(list1);
 console.log(ans);
+
+// Using filter instead
+function countDevelopers(list) {
+  return list.filter(
+    (x) => x.continent == 'Europe' && x.language == 'JavaScript'
+  ).length;
+}
