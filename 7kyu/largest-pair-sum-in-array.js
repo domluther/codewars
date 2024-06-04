@@ -27,3 +27,7 @@ function largestPairSum(numbers) {
 let vals = [10, 14, 2, 23, 19];
 const ans = largestPairSum(vals);
 console.log(ans);
+
+// One liner - sort it and return the sum of first two numbers - but O(n log n) instead of O(n)
+
+// Alternatively - find the biggest, splice it, find the biggest, splice it - O(n) but need to loop twice so slower
