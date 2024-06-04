@@ -9,8 +9,19 @@
 
 function largestPairSum(numbers) {
   let sum = 0;
-  //TODO: Write your Code here
-  return 0;
+  //   The first one is the biggest.
+  let biggest = numbers[0];
+  let secondBiggest = 0;
+
+  // Simplest? Iterate through. Find the largest two numbers.
+  for (let i = 1; i < numbers.length; i++) {
+    let num = numbers[i];
+    if (num > biggest) {
+      secondBiggest = biggest;
+      biggest = num;
+    } else if (num > secondBiggest) secondBiggest = num;
+  }
+  return biggest + secondBiggest;
 }
 
 let vals = [10, 14, 2, 23, 19];
