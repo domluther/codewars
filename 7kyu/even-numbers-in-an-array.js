@@ -8,7 +8,19 @@
 // ([6, -25, 3, 7, 5, 5, 7, -3, 23], 1) => [6]
 
 function evenNumbers(array, number) {
-  return [];
+  // Simplest option - iterate through array, filtering out all even numbers
+  // Then splice out the last x elements of the array
+  //   return array.filter((num) => num % 2 === 0).slice(-number);
+
+  // Slightly faster - loop through from the right + unshift items into the start of the array while the array is too short
+  const evens = [];
+  let i = array.length - 1;
+  while (evens.length < number && i >= 0) {
+    if (array[i] % 2 === 0) evens.unshift(array[i]);
+    i--;
+  }
+
+  return evens;
 }
 
 const valuesIn = [1, 2, 3, 4, 5, 6, 7, 8, 9];
