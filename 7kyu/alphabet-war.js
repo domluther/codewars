@@ -31,6 +31,11 @@ function alphabetWar(fight) {
   let scoreMap = { w: 4, p: 3, b: 2, s: 1, m: -4, q: -3, d: -2, z: -1 };
   let score = 0;
 
+  for (let i = 0; i < fight.length; i++) {
+    // What's the score for the letter? Not in map = undefined => 0
+    let letterScore = scoreMap[fight[i]] || 0;
+    score += letterScore;
+  }
   return score > 0
     ? 'Left side wins!'
     : score < 0
@@ -38,5 +43,5 @@ function alphabetWar(fight) {
       : "Let's fight again!";
 }
 
-const ans = alphabetWar('zdqmwpbs');
+const ans = alphabetWar('hellow');
 console.log(ans);
