@@ -19,9 +19,17 @@
 // The maximum product obtained from multiplying -2 * 7 = -14, and they're adjacent numbers in the array.
 
 function adjacentElementsProduct(array) {
-  return 0;
+  let currentProduct = 0;
+  let maxProduct = -Infinity;
+
+  for (let i = 0; i < array.length - 1; i++) {
+    // Iterate through - two numbers next to each other got a higher product? Update it
+    currentProduct = array[i] * array[i + 1];
+    if (currentProduct > maxProduct) maxProduct = currentProduct;
+  }
+  return maxProduct;
 }
 
-const anas = adjacentElementsProduct([-23, 4, -5, 99, -27, 329, -2, 7, -921]);
+const ans = adjacentElementsProduct([-23, 4, -5, 99, -27, 329, -2, 7, -921]);
 // -14
 console.log(ans);
