@@ -5,6 +5,7 @@
 
 // Example: n = 86240 should return "(2**5)(5)(7**2)(11)"
 
+// Failed as I didn't know how to work out prime numbers
 function primeFactors(n) {
   const primes = [
     2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71,
