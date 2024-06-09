@@ -30,7 +30,28 @@
 // Peek at the top of the stack, does it cancel out what you have? If so pop it and ignore current item.
 
 function dirReduc(arr) {
-  // ...
+  const stackOfDirections = [];
+  const mapOfDirections = {
+    NORTH: 'SOUTH',
+    EAST: 'WEST',
+    SOUTH: 'NORTH',
+    WEST: 'EAST',
+  };
+  for (direction of arr) {
+    const top = stackOfDirections.at(-1);
+    // Stack is empty
+    if (!top) {
+      stackOfDirections.push(direction);
+    }
+    // Pop matching directions
+    else if (top === mapOfDirections[direction]) {
+      stackOfDirections.pop();
+      // Important direction so add it
+    } else {
+      stackOfDirections.push(direction);
+    }
+  }
+  return stackOfDirections;
 }
 
 const dir1 = ['NORTH', 'SOUTH', 'SOUTH', 'EAST', 'WEST', 'NORTH', 'WEST'];
@@ -40,5 +61,5 @@ const dir2 = ['NORTH', 'WEST', 'SOUTH', 'EAST'];
 const dir3 = ['NORTH', 'SOUTH', 'EAST', 'WEST', 'EAST', 'WEST'];
 // []
 
-const ans = dirReduc(dir1);
+const ans = dirReduc(dir3);
 console.log(ans);
