@@ -36,16 +36,26 @@
 function gap(g, m, n) {
   // Generate prime numbers between m & n
   const primes = [];
+  let lastPrime;
+  let thisPrime;
   for (let i = m; i <= n; i++) {
-    isPrime(i) ? primes.push(i) : '';
+    // When you find a prime
+    if (isPrime(i)) {
+      thisPrime = i;
+      if (thisPrime - lastPrime === g) {
+        return [lastPrime, thisPrime];
+      } else {
+        lastPrime = thisPrime;
+      }
+    }
   }
   // Check for gap
-  return primes.length;
+  return null;
 }
 
 function isPrime(n) {
   // Iterate through the numbers from 2-n, if there's a divisor then it's not prime. Go up in 2s because after 2 even nunbers aren't prime
-  if (n === 2) return true;
+  if (n === 2 || n === 3) return true;
   let factors = [];
   for (let i = 3; i <= n; i += 2) {
     // console.log(n, i);
@@ -54,6 +64,6 @@ function isPrime(n) {
   }
 }
 
-const ans = gap(2, 1, 500);
+const ans = gap(6, 100, 110);
 // [101, 103];
 console.log(ans);
