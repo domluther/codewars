@@ -39,7 +39,7 @@ function gap(g, m, n) {
   for (let i = m; i <= n; i++) {
     isPrime(i) ? primes.push(i) : '';
   }
-  // your code
+  // Check for gap
   return primes.length;
 }
 
