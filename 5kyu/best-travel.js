@@ -24,9 +24,65 @@
 // in some languages this "list" is in fact a string (see the Sample Tests).
 
 function chooseBestSum(t, k, ls) {
-  // your code
+  if (k > ls.length) return null;
+  // Generate the combinations
+  let combinations = genCombos(ls, k);
+
+  //   Used to keep track of the closest total
+  let closest = 0;
+  //   Sum each of the combinations until you find a matching total/try them all
+  // If k is 1, the combinations won't be a nested array so the other function fails
+  if (k === 1) {
+    for (value of combinations) {
+      if (value === t) return value;
+      if (value <= t && value > closest) {
+        closest = value;
+      }
+    }
+    // Is that total better than the one you've calculated so far?
+  } else {
+    for (combination of combinations) {
+      total = 0;
+      total = sumArray(combination);
+      // Find the total? Stop calculating and return it
+      if (total === t) return total;
+      // Is that total better than the one you've calculated so far?
+      if (total <= t && total > closest) {
+        closest = total;
+      }
+    }
+  }
+  return closest === 0 ? null : closest;
+}
+
+function sumArray(combination) {
+  let total = 0;
+  for (value of combination) {
+    total += value;
+  }
+  return total;
+}
+
+// n is the array, k is the size of each set
+// https://jarednielsen.com/algorithm-combinations/ need to understand
+function genCombos(n, k) {
+  const combos = [];
+  let head;
+  let tail;
+
+  if (k === 1) return n;
+  for (let i = 0; i < n.length; i++) {
+    head = n.slice(i, i + 1);
+    tail = genCombos(n.slice(i + 1), k - 1);
+    for (let j = 0; j < tail.length; j++) {
+      let combo = head.concat(tail[j]);
+      combos.push(combo);
+    }
+  }
+
+  return combos;
 }
 
 var ts = [50, 55, 56, 57, 58];
-const ans = chooseBestSum(163, 3, ts);
+const ans = chooseBestSum(163, 1, ts);
 console.log(ans);
