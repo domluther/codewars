@@ -41,12 +41,9 @@ function gap(g, m, n) {
   for (let i = m; i <= n; i++) {
     // When you find a prime
     if (isPrime(i)) {
-      // Update thisPrime to be the most recent one
       thisPrime = i;
-      // If the gap between it and the last prime is what we're looking for, return that pair
       if (thisPrime - lastPrime === g) {
         return [lastPrime, thisPrime];
-        // If it's not, then it's the last prime we found
       } else {
         lastPrime = thisPrime;
       }
@@ -56,17 +53,15 @@ function gap(g, m, n) {
   return null;
 }
 
-// Works but isPrime needs to be more efficient
-
 function isPrime(n) {
   // Iterate through the numbers from 2-n, if there's a divisor then it's not prime. Go up in 2s because after 2 even nunbers aren't prime
   if (n === 2 || n === 3) return true;
   let factors = [];
-  for (let i = 3; i <= n; i += 2) {
-    // console.log(n, i);
-    if (i === n) return true;
+  //   Sped up by i <= Math.sqrt
+  for (let i = 2; i <= Math.sqrt(n); i++) {
     if (n % i === 0) return false;
   }
+  return true;
 }
 
 const ans = gap(6, 100, 110);
