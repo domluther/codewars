@@ -22,10 +22,34 @@
 // If an array with one element is folded, it stays as the same array.
 
 function foldArray(array, runs) {
-  return [0];
+  let toFold = array;
+  let folded;
+
+  //   Each run, the folded array needs to be blank again
+  for (let run = 1; run <= runs; run++) {
+    folded = [];
+
+    // Iterate through adding the first + last elements together
+    for (let leftPointer = 0; leftPointer < toFold.length / 2; leftPointer++) {
+      rightPointer = toFold.length - leftPointer - 1;
+
+      //   Not pointing at the same element? Then fold, otherwise add that element
+      if (leftPointer !== rightPointer) {
+        folded.push(toFold[leftPointer] + toFold[rightPointer]);
+      } else {
+        folded.push(toFold[leftPointer]);
+      }
+    }
+    // Get ready to fold again
+    toFold = [...folded];
+  }
+  return folded;
 }
 
 var input = [1, 2, 3, 4, 5];
 var expected = [6, 6, 3];
 const ans = foldArray(input, 1);
 console.log(ans);
+
+// Cute way of folding the array using pop + shift. However shift is O(n) (not biggest impact as got nested loop)
+// while (c.length) r.push(c.pop() + (c.shift() || 0));
