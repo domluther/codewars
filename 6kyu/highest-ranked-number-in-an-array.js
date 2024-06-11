@@ -33,3 +33,9 @@ const arrIn = [1, 2, 3, 4, 5];
 const ans = highestRank(arrIn);
 console.log(ans);
 // 12
+
+// Clean way to update a map. Setting it to 0 means it's always an update
+// arr.forEach(function(elem){
+//     if(obj[elem] === undefined)
+//       obj[elem] = 0;
+//     obj[elem]++;
