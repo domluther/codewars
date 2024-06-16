@@ -28,5 +28,16 @@ function isOdd(character) {
   return +character % 2 !== 0;
 }
 
-const ans = dashatize(27343);
+function dashatizeRegexed(num) {
+  // Regex to replace any odd digits with the digit with a - before and after
+  const replacedOdds = String(num).replace(/([13579])/g, '-$1-');
+  //   Can't have doubled dashes
+  const noDoubleDashes = replacedOdds.replace(/(--)/g, '-');
+  //   Can't start or end with a -
+  const notAtStart = noDoubleDashes.replace(/^-/, '');
+  const notAtEnd = notAtStart.replace(/-$/, '');
+  return notAtEnd;
+}
+
+const ans = dashatizeRegexed(17343);
 console.log(ans);
