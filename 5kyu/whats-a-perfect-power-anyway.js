@@ -16,13 +16,16 @@
 // });
 
 const isPP = function (n) {
-  let output = [];
-  for (let i = 2; i <= n; i++) {
-    const internalAns = Math.pow(n, 1 / i);
-    if (internalAns % 1 === 0) output = [internalAns, i];
+  // Only go up to root - reduces search spaced but +1 to make sure it works for edge cases
+  for (let i = 2; i <= Math.sqrt(n) + 1; i++) {
+    // parseFloat to deal with 6.99999
+    const internalAns = parseFloat(Math.pow(n, 1 / i)).toPrecision(12);
+    // If this gives you an integer, got a result and stop
+    if (internalAns % 1 === 0) return [Number(internalAns), i];
   }
-  return output.length === 0 ? null : output;
+  //   got here? no result so null
+  return null;
 };
 
-const ans = isPP(12008989);
+const ans = isPP(8);
 console.log(ans);
