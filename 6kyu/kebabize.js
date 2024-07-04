@@ -14,6 +14,8 @@ function kebabize(str) {
     const char = str[i];
     // Parse out non letters
     if (!isLetter(char)) continue;
+    if (isUpper(char)) kebabed += '-';
+    kebabed += char;
   }
   // Iterate through the string starting at character 1.
   // If its a capital, add a hyphen
