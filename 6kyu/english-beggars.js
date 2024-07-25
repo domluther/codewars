@@ -25,6 +25,7 @@
 
 function beggars(values, n) {
   const output = [];
+  // Loop through them all, add to the array in the relevant place based on the index & the number of beggars
   for (let i = 0; i < values.length; i++) {
     output[i % n] = !output[i % n] ? values[i] : output[i % n] + values[i];
   }
@@ -35,6 +36,7 @@ function beggars(values, n) {
   return output;
 }
 
+// Examples to run
 const ans1 = beggars([1, 2, 3, 4], 1);
 console.log(ans1);
 const ans2 = beggars([1, 2, 3, 4, 5], 6);
