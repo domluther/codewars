@@ -26,32 +26,54 @@
 
 // Pseudocode
 // Rewatch https://www.youtube.com/watch?v=mUW6tP105Es and turn that into pseudocode
-// Iterate through the numbers from 2 to n
-// Not prime?
-// Decompose to primes.
-// Add to map
-// Turn map into formatted string
+
+// Used to keep track of found primes and speed up algorithms
+const primes = [2];
 
 function decomp(n) {
   let msg = '';
   const factorMap = {};
-  //   if (n === 2) return '2';
+  // Iterate through the numbers from 2 to n
   for (let num = 2; num <= n; num++) {
     if (isPrime(num)) {
       // Prime? Add to map
       factorMap[num] = (factorMap[num] ?? 0) + 1;
     } else {
-      console.log(num);
+      // Not prime?
+      // Factor to primes.
+      const values = factorToPrimes(num);
+      for (const value of values) {
+        factorMap[value] = (factorMap[value] ?? 0) + 1;
+      }
+      // Add to map
     }
   }
+  // Turn map into formatted string
   return mapToString(factorMap);
 }
 
+function factorToPrimes(num) {
+  const factors = [];
+  for (let i = 2; i <= Math.sqrt(num); i++) {
+    while (num % i === 0) {
+      factors.push(i);
+      num /= i;
+    }
+  }
+  if (num > 1) {
+    factors.push(num);
+  }
+
+  return factors;
+}
+
 function isPrime(n) {
-  if (n === 2) return true;
+  // Check known primes first
+  if (primes.includes(n)) return true;
   for (let i = 2; i <= Math.sqrt(n); i++) {
     if (n % i === 0) return false;
   }
+  primes.push(n);
   return true;
 }
 
@@ -74,5 +96,7 @@ console.log(ans1);
 const ans2 = decomp(3);
 console.log(ans2);
 
-const ans3 = decomp(4);
+const ans3 = decomp(22);
 console.log(ans3);
+
+console.log(factorToPrimes(15));
